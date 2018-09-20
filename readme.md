@@ -22,5 +22,6 @@ JavaScript Bootcamp
     </details>
 <details>
 <summary> JavaScript Functions</summary>
-    * 
+
++ 
 </details>
