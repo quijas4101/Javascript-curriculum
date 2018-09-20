@@ -1,22 +1,33 @@
-//create array with 5 todos
-// print You have x todo
-// Print the first and second to last items -> Todo: walk the dog , 
-const todos = ['Do homework', 'Work out', 'Walk the dog', 'Clean room', 'Be lazy']
+// const todos = ['Do homework', 'Work out', 'Walk the dog', 'Clean room', 'Be lazy']
+const todos = [{
+    text:'Do homework',
+    completed: 'yes'
+},{
+    text:'Work out',
+    completed: 'no'
+},{
+    text:'Walk the dog',
+    completed: 'yes'
+},{
+    text:'Clean room',
+    completed: 'no'
+},{
+    text:'Be lazy',
+    completed: 'no'
+}]
 
-//delete the 3rd item
-//add new item onto the end
-//remove the first item from the list
+//1.convert array to array of objects -> text , completed 
+//2. create function to remove a todo by text value
+const deleteTodo = function (todo, textNote){
+    
+    const index = todo.findIndex(function(note,num){
+       return note.text.toLowerCase() === textNote.toLowerCase() 
 
-todos.splice(2,1)
-todos.push('New task')
-todos.shift()
+    })
+    if (index > -1){
+        todo.splice(index, 1)
+    }
+}
 
-console.log(`You have ${todos.length} todos`)
-
-todos.forEach(function(item,index){
-    console.log(`${index + 1}. ${item}`)
-})
-
-//console.log(todos)
-//console.log(`Todo: ${todos[0]}`)
-//console.log(`Todo: ${todos[3]}`)
+deleteTodo(todos, 'walk the dog')
+console.log(todos)
