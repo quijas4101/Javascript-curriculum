@@ -38,4 +38,12 @@ const index = notes.findIndex(function(note,index){ // stops after it finds what
     return note.title === ' Habbits to work on'
 })
 
+/* const findNote = function (notes,noteTitle){
+    const index = notes.findIndex(function(note,index){
+        return note.title.toLowerCase() === noteTitle.toLowerCase()   // once statement is true it returns the index
+    })
+    return notes[index]
+}
+ */
+
 console.log(index)
