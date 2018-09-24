@@ -21,7 +21,7 @@ JavaScript Bootcamp
 
     </details>
 <details>
-<summary> JavaScript Functions</summary>
+<summary> JavaScript Functions </summary>
 
 + [functions-101.js](https://github.com/quijas4101/portfolio/blob/master/js-bootcamp/functions/functions-101.js)
 + [undefined-null.js](https://github.com/quijas4101/portfolio/blob/master/js-bootcamp/functions/undefined-null.js)
