@@ -15,12 +15,58 @@ const savedTodos = function(todos){
     localStorage.setItem('todos', JSON.stringify(todos))
 }
 
+//remove todos from  list
+const removeTodo = function (id){
+    const todoIndex = todos.findIndex(function(todo){
+        return todo.id === id 
+    })
+    if (todoIndex > -1){
+        todos.splice(todoIndex, 1)
+    }
+}
+
+// change completed property when checkbox is checked
+const toggleTodo = function(id){
+    const todo = todos.find(function(todo){
+        return todo.id === id 
+    })
+    if (todo !=  undefined){
+        todo.completed = !todo.completed
+    }
+}
+
 //Generate the DOM structure for a todos
-const generateTodoDOM = function(item){
-    const newParagraph =document.createElement('p')
-    newParagraph.textContent = item.text
+const generateTodoDOM = function(item){ 
+    const todoEl = document.createElement('div')
+    const checkbox = document.createElement('input')
+    const textEl = document.createElement('span')
+    const button = document.createElement('button')
+    
+    //setup todo checkbox
+    checkbox.setAttribute('type', 'checkbox')
+    checkbox.checked = item.completed
+    todoEl.appendChild(checkbox)
+    checkbox.addEventListener('change',function(e){
+        toggleTodo(item.id)
+        savedTodos(todos)
+        renderTodos(todos,filters)
+    })
    
-    return newParagraph
+    //setup todo text
+    textEl.textContent = item.text
+    todoEl.appendChild(textEl)
+
+    //setup todo button
+    button.textContent = 'x'
+    todoEl.appendChild(button)
+    button.addEventListener('click',function(e){
+        removeTodo(item.id)
+        savedTodos(todos)
+        renderTodos(todos,filters)
+    })
+   
+   
+    return todoEl
 }
 
 //Render application todos based on filters
