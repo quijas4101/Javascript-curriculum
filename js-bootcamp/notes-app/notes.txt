@@ -1,0 +1,38 @@
+//Unix Epoch - January 1st 1970 00:00:00
+//
+
+const now = new Date()
+const timestamp = now.getTime()
+
+const myDate = new Date(timestamp)
+// console.log(myDate.getFullYear())
+
+/* console.log(`Year: ${now.getFullYear()}`)
+console.log(`Month: ${now.getMonth()}`)
+console.log(`Day: ${now.getDate()}`)
+console.log(`Hour: ${now.getHours()}`)
+console.log(`Minutes: ${now.getMinutes()}`)
+console.log(`Seconds: ${now.getSeconds()}`)
+ */
+
+ const dateOne = new Date('January 03 1990 6:25:01')
+ const TimeStampOne = dateOne.getTime()
+
+ const dateTwo = new Date('January 22 1974 8:45:05')
+ const TimeStampTwo = dateTwo.getTime()
+
+ if(TimeStampOne < TimeStampTwo){
+    console.log(dateOne.toString())
+ }else{
+    console.log(dateTwo.toString())
+ }
+
+ const birthday = moment()
+birthday.month('January').day(03).year(1990)
+
+
+console.log(birthday.format('MMM D, YYYY'))
+console.log(birthday.fromNow())
+
+const nowTimeStamp = birthday.valueOf()
+console.log(moment(nowTimeStamp).format('MMMM Do, YYYY'))

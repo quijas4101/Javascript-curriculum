@@ -4,8 +4,11 @@
     <body>
         <input id="note-title" placeholder="Note Title">
         <textarea id="note-body" placeholder="stuff goes here" ></textarea>
-        <button id='remove-note'>remove note</button>
-        <button id='save-note'>save note</button>
+        <span id="last-edited"></span>
+        <p>
+        <button id="remove-note">remove note</button>
+        <button id="save-note">save note</button>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
         <script src="notes-functions.js"></script>
         <script src="notes-edit.js"></script>
     </body>
