@@ -30,6 +30,7 @@ const generateNoteDOM = function(note){
     const noteEl = document.createElement('div')
     const textEl = document.createElement('a')
     const button = document.createElement('button')
+    const dateElement = document.createElement('span')
 
     //setup the remove note button
     button.textContent = 'x'
@@ -49,15 +50,44 @@ const generateNoteDOM = function(note){
     
     textEl.setAttribute('href',`./edit.html#${note.id}`)
     noteEl.appendChild(textEl)
-    
+    dateElement.textContent = `---Updated:  ${moment(note.updatedAt).fromNow()}`
+    noteEl.appendChild(dateElement)
     return noteEl
 }
 
 //sort your notes by one of three ways
 const sortNotes = function(notes, sortBy){
     if(sortBy === 'byEdited'){
-       
-    }
+       return notes.sort(function(a,b){
+            if(a.updatedAt> b.updatedAt){
+                return -1
+            }else if (a.updatedAt < b.updatedAt){
+                return 1
+            }else{
+                return 0
+            }
+       })
+    }else if(sortBy === 'byCreated'){
+        return notes.sort(function(a,b){
+             if(a.createdAt > b.createdAt){
+                 return -1
+             }else if (a.createdAt < b.createdAt){
+                 return 1
+             }else{
+                 return 0
+             }
+        })
+     }else if(sortBy === 'alphabetical'){
+        return notes.sort(function(a,b){
+            if(a.title.toLowerCase() < b.title.toLowerCase() ){
+                return -1
+            }else if(a.title.toLowerCase() > b.title.toLowerCase() ){
+                return 1
+            }else{
+                return 0
+            }
+        })
+     }
 }
 
 //Render application notes
