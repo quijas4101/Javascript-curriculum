@@ -9,6 +9,7 @@ const Person = function(firstName, lastName, age, likes = []){
 
 Person.prototype.getBio = function (){
     let bio = `${this.firstName} is ${this.age}.`
+    
     this.likes.forEach((like) => {
         bio += ` ${this.firstName} likes ${like}.`
     })
@@ -27,5 +28,9 @@ me.setName('Jean-luc Quijas')
 console.log(me.getBio())
 
 const person2 = new Person('Clancy', 'Turner', 51)
+
+Person.prototype.getBio = function (){
+    return 'Testing Testing'
+}
 
 console.log(person2.getBio())
