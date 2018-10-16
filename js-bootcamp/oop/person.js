@@ -23,14 +23,11 @@ Person.prototype.setName  =  function (fullName){
 }
                  
 const me = new Person('Jose', 'Quijas', 28, ['Teaching', ' Running'])
+
 me.setName('Jean-luc Quijas')
 
 console.log(me.getBio())
 
 const person2 = new Person('Clancy', 'Turner', 51)
-
-Person.prototype.getBio = function (){
-    return 'Testing Testing'
-}
 
 console.log(person2.getBio())
