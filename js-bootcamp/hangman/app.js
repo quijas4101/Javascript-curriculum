@@ -1,12 +1,16 @@
-// primitive value: streing, number, buoolean, null undefined
+const puzzleEl = document.querySelector('#puzzle')
+const guessesEl =  document.querySelector('#guesses')
+const firstWord = new Hangman('California', 4)
 
-//object: myObject --> Object.prototype --> null
-//Array: myArray --> Array.prototype --> Object.prototype --> null
-//function: myFunc --> Function.prototype --> Object.prototype --> null
+puzzleEl.textContent = firstWord.getPuzzle()
+guessesEl.textContent = firstWord.getStatusMessage()
 
-const product = 'Computer'
 
-console.log(product)
+window.addEventListener('keypress', function(e){
+    const guess = String.fromCharCode(e.charCode)
 
-const otherProduct = new String('Phone')
-console.log(otherProduct)
+    firstWord.makeGuess(guess)
+    puzzleEl.textContent = firstWord.getPuzzle()
+    guessesEl.textContent = firstWord.getStatusMessage()
+   
+})
