@@ -1,33 +1,59 @@
 // Prototypal Inheritance
 
-const Person = function(firstName, lastName, age, likes = []){
-    this.firstName = firstName
-    this.lastName = lastName
-    this.age = age
-    this.likes = likes
-}
+class Person {
+    constructor(firstName, lastName, age, likes = []){
+        this.firstName = firstName
+        this.lastName = lastName
+        this.age = age
+        this.likes = likes
+    }
 
-Person.prototype.getBio = function (){
-    let bio = `${this.firstName} is ${this.age}.`
+    getBio(){
+        let bio = `${this.firstName} is ${this.age}.`
     
     this.likes.forEach((like) => {
         bio += ` ${this.firstName} likes ${like}.`
     })
     return bio
-}
+    }
 
-Person.prototype.setName  =  function (fullName){
+    setName(fullName){
     const names = fullName.split(' ')
     this.firstName = names[0]
     this.lastName = names[1]
+    }
 }
-                 
-const me = new Person('Jose', 'Quijas', 28, ['Teaching', ' Running'])
 
-me.setName('Jean-luc Quijas')
+class Employee extends Person {
+    constructor(firstName, lastName, age, position, likes = []){
+        super(firstName, lastName, age, likes)
+        this.position = position
+    }
+    getBio(){
+        return `${this.firstName} ${this.lastName} is a ${this.position}`
+    }
+    getYearsLeft(){
+        return 65 - this.age
+    }
+}
 
-console.log(me.getBio())
+class Student extends Person {
+    constructor(firstName, lastName, age, grade, likes = []){
+        super(firstName, lastName, age, likes)
+        this.grade = grade
+    }
+    getBio(){
+        const status = this.grade >= 70 ? 'passing' : 'failing'
+        return `${this.firstName} is ${status} the class! with ${this.grade}%`
+    }
 
-const person2 = new Person('Clancy', 'Turner', 51)
+    updateGrade(grade){
+        this.grade += grade
+    }
+}
 
-console.log(person2.getBio())
+const kid = new Student('Jose', 'Quijas', 15, 100, ['pizza', 'cars'])
+console.log(kid.getBio())
+
+kid.updateGrade(-31)
+console.log(kid.getBio())
